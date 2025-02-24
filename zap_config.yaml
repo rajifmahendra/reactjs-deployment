@@ -1,0 +1,61 @@
+env:
+    contexts:
+        - excludePaths: []
+          includePaths:
+            - http:http://34.142.219.174:3000/.*
+          name: Default Context
+          technology:
+            exclude: []
+          urls:
+            - http://34.142.219.174:3000/
+    parameters:
+        failOnError: true
+        failOnWarning: false
+        progressToStdout: true
+    vars: {}
+jobs:
+    - name: passiveScan-config
+      parameters:
+        enableTags: false
+        scanOnlyInScope: true
+      rules: []
+      type: passiveScan-config
+    - name: spider
+      parameters:
+        context: Default Context
+        maxChildren: 0
+        maxDepth: 0
+        maxDuration: 0
+      type: spider
+    - name: spiderAjax
+      parameters:
+        context: Default Context
+        maxCrawlDepth: 10
+        maxDuration: 60
+        numberOfBrowsers: 4
+        runOnlyIfModern: false
+      type: spiderAjax
+    - name: passiveScan-wait
+      parameters: {}
+      type: passiveScan-wait
+    - name: activeScan
+      parameters:
+        context: Default Context
+        threadPerHost: 4
+      policyDefinition:
+        rules: []
+      type: activeScan
+    - name: report-pdf
+      parameters:
+        reportDescription: ""
+        reportDir: /output/dast-output-777096946
+        reportFile: ZAP-Report
+        reportTitle: ZAP Scanning Report
+        template: traditional-pdf
+      type: report
+    - name: report
+      parameters:
+        reportDir: /output/dast-output-777096946
+        reportFile: ZAP-Report
+        template: traditional-json-plus
+      type: report
