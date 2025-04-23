@@ -33,10 +33,10 @@ env:
     technology: {}
     structure: {}
     users:
-    - name: gabriella
+    - name: rajif
       credentials:
         password: mypassword
-        username: naomi@gmail.com
+        username: rajif@gmail.com
   parameters: {}
 jobs:
 - type: passiveScan-config
@@ -44,13 +44,13 @@ jobs:
 - type: spider
   parameters:
     context: Authentication Test
-    user: gabriella
+    user: rajif
     url: http://13.212.48.92:4004/
     parseDsStore: null
 - type: spiderAjax
   parameters:
     context: Authentication Test
-    user: gabriella
+    user: rajif
     url: http://13.212.48.92:4004/
     browserId: null
 - type: passiveScan-wait
@@ -58,7 +58,7 @@ jobs:
 - type: activeScan
   parameters:
     context: Authentication Test
-    user: gabriella
+    user: rajif
   policyDefinition:
     defaultStrength: insane
     defaultThreshold: high
