@@ -8,9 +8,7 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# Install http-server untuk serving dist folder
-RUN npm install -g http-server
-
+# Expose port Vite preview (default: 4173)
 EXPOSE 4173
-CMD ["http-server", "dist", "-p", "4173", "--spa"]
 
+CMD ["npm", "run", "preview"]
