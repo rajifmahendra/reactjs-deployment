@@ -2,24 +2,24 @@ env:
   contexts:
   - name: Authentication Test
     urls:
-    - https://http://13.212.48.92:4004
+    - http://13.212.48.92:4004
     includePaths:
-    - https://http://13.212.48.92:4004.*
+    - http://13.212.48.92:4004.*
     excludePaths:
-    - https://http://13.212.48.92:4004.*.css
-    - https://http://13.212.48.92:4004.*.mp3
-    - https://http://13.212.48.92:4004.*.mp4
-    - https://http://13.212.48.92:4004.*.jpg
-    - https://http://13.212.48.92:4004.*.jpeg
-    - https://http://13.212.48.92:4004.*.woff
-    - https://http://13.212.48.92:4004.*.webp
-    - https://http://13.212.48.92:4004.*.png
-    - https://http://13.212.48.92:4004.*.svg
+    - http://13.212.48.92:4004.*.css
+    - http://13.212.48.92:4004.*.mp3
+    - http://13.212.48.92:4004.*.mp4
+    - http://13.212.48.92:4004.*.jpg
+    - http://13.212.48.92:4004.*.jpeg
+    - http://13.212.48.92:4004.*.woff
+    - http://13.212.48.92:4004.*.webp
+    - http://13.212.48.92:4004.*.png
+    - http://13.212.48.92:4004.*.svg
     authentication:
       method: form
       parameters:
-        loginPageUrl: https://http://13.212.48.92:4004/login
-        loginRequestUrl: https://http://13.212.48.92:4004/login
+        loginPageUrl: http://13.212.48.92:4004/login
+        loginRequestUrl: http://13.212.48.92:4004/login
         loginRequestBody: "email={%username%}&password={%password%}"
       verification:
         method: autodetect
@@ -45,13 +45,13 @@ jobs:
   parameters:
     context: Authentication Test
     user: gabriella
-    url: https://http://13.212.48.92:4004/
+    url: http://13.212.48.92:4004/
     parseDsStore: null
 - type: spiderAjax
   parameters:
     context: Authentication Test
     user: gabriella
-    url: https://http://13.212.48.92:4004/
+    url: http://13.212.48.92:4004/
     browserId: null
 - type: passiveScan-wait
   parameters: {}
