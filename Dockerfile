@@ -7,7 +7,9 @@ RUN npm install
 
 COPY . .
 RUN npm run build
-RUN npm install -g serve
 
-EXPOSE 3000
-CMD ["serve", "-s", "build", "-l", "3000"]
+# Install http-server untuk serving dist folder
+RUN npm install -g http-server
+
+EXPOSE 4173
+CMD ["http-server", "dist", "-p", "4173"]
