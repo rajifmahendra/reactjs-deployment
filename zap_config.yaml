@@ -2,28 +2,28 @@ env:
   contexts:
   - name: Authentication Test
     urls:
-    - https://www.periplus.com
+    - https://http://13.212.48.92:4004
     includePaths:
-    - https://www.periplus.com.*
+    - https://http://13.212.48.92:4004.*
     excludePaths:
-    - https://www.periplus.com.*.css
-    - https://www.periplus.com.*.mp3
-    - https://www.periplus.com.*.mp4
-    - https://www.periplus.com.*.jpg
-    - https://www.periplus.com.*.jpeg
-    - https://www.periplus.com.*.woff
-    - https://www.periplus.com.*.webp
-    - https://www.periplus.com.*.png
-    - https://www.periplus.com.*.svg
+    - https://http://13.212.48.92:4004.*.css
+    - https://http://13.212.48.92:4004.*.mp3
+    - https://http://13.212.48.92:4004.*.mp4
+    - https://http://13.212.48.92:4004.*.jpg
+    - https://http://13.212.48.92:4004.*.jpeg
+    - https://http://13.212.48.92:4004.*.woff
+    - https://http://13.212.48.92:4004.*.webp
+    - https://http://13.212.48.92:4004.*.png
+    - https://http://13.212.48.92:4004.*.svg
     authentication:
       method: form
       parameters:
-        loginPageUrl: https://www.periplus.com/account/Login
-        loginRequestUrl: https://www.periplus.com/account/Login
+        loginPageUrl: https://http://13.212.48.92:4004/login
+        loginRequestUrl: https://http://13.212.48.92:4004/login
         loginRequestBody: "email={%username%}&password={%password%}"
       verification:
         method: autodetect
-        loggedOutRegex: <input type="submit" value="Login" id="button-login">
+        loggedOutRegex: <input type="submit">
         pollFrequency: 60
         pollUnits: requests
         pollUrl: ""
@@ -45,13 +45,13 @@ jobs:
   parameters:
     context: Authentication Test
     user: gabriella
-    url: https://www.periplus.com/
+    url: https://http://13.212.48.92:4004/
     parseDsStore: null
 - type: spiderAjax
   parameters:
     context: Authentication Test
     user: gabriella
-    url: https://www.periplus.com/
+    url: https://http://13.212.48.92:4004/
     browserId: null
 - type: passiveScan-wait
   parameters: {}
