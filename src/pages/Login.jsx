@@ -50,6 +50,7 @@ function Login() {
             </label>
             <input
               type="email"
+              name="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -71,6 +72,7 @@ function Login() {
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="••••••••"
               disabled={loading}
+              name="password"
             />
           </div>
           

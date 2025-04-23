@@ -1,61 +1,64 @@
 env:
-    contexts:
-        - excludePaths: []
-          includePaths:
-            - http:http://34.142.219.174:3000/.*
-          name: Default Context
-          technology:
-            exclude: []
-          urls:
-            - http://34.142.219.174:3000/
-    parameters:
-        failOnError: true
-        failOnWarning: false
-        progressToStdout: true
-    vars: {}
+  contexts:
+  - name: Authentication Test
+    urls:
+    - https://www.periplus.com
+    includePaths:
+    - https://www.periplus.com.*
+    excludePaths:
+    - https://www.periplus.com.*.css
+    - https://www.periplus.com.*.mp3
+    - https://www.periplus.com.*.mp4
+    - https://www.periplus.com.*.jpg
+    - https://www.periplus.com.*.jpeg
+    - https://www.periplus.com.*.woff
+    - https://www.periplus.com.*.webp
+    - https://www.periplus.com.*.png
+    - https://www.periplus.com.*.svg
+    authentication:
+      method: form
+      parameters:
+        loginPageUrl: https://www.periplus.com/account/Login
+        loginRequestUrl: https://www.periplus.com/account/Login
+        loginRequestBody: "email={%username%}&password={%password%}"
+      verification:
+        method: autodetect
+        loggedOutRegex: <input type="submit" value="Login" id="button-login">
+        pollFrequency: 60
+        pollUnits: requests
+        pollUrl: ""
+        pollPostData: ""
+    sessionManagement:
+      method: cookie
+    technology: {}
+    structure: {}
+    users:
+    - name: gabriella
+      credentials:
+        password: mypassword
+        username: naomi@gmail.com
+  parameters: {}
 jobs:
-    - name: passiveScan-config
-      parameters:
-        enableTags: false
-        scanOnlyInScope: true
-      rules: []
-      type: passiveScan-config
-    - name: spider
-      parameters:
-        context: Default Context
-        maxChildren: 0
-        maxDepth: 0
-        maxDuration: 0
-      type: spider
-    - name: spiderAjax
-      parameters:
-        context: Default Context
-        maxCrawlDepth: 10
-        maxDuration: 60
-        numberOfBrowsers: 4
-        runOnlyIfModern: false
-      type: spiderAjax
-    - name: passiveScan-wait
-      parameters: {}
-      type: passiveScan-wait
-    - name: activeScan
-      parameters:
-        context: Default Context
-        threadPerHost: 4
-      policyDefinition:
-        rules: []
-      type: activeScan
-    - name: report-pdf
-      parameters:
-        reportDescription: ""
-        reportDir: /output/dast-output-777096946
-        reportFile: ZAP-Report
-        reportTitle: ZAP Scanning Report
-        template: traditional-pdf
-      type: report
-    - name: report
-      parameters:
-        reportDir: /output/dast-output-777096946
-        reportFile: ZAP-Report
-        template: traditional-json-plus
-      type: report
+- type: passiveScan-config
+  parameters: {}
+- type: spider
+  parameters:
+    context: Authentication Test
+    user: gabriella
+    url: https://www.periplus.com/
+    parseDsStore: null
+- type: spiderAjax
+  parameters:
+    context: Authentication Test
+    user: gabriella
+    url: https://www.periplus.com/
+    browserId: null
+- type: passiveScan-wait
+  parameters: {}
+- type: activeScan
+  parameters:
+    context: Authentication Test
+    user: gabriella
+  policyDefinition:
+    defaultStrength: insane
+    defaultThreshold: high
