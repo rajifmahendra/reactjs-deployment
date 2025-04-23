@@ -18,7 +18,7 @@ const API_URL = import.meta.env.VITE_BE_URL;
       const savedToken = localStorage.getItem("token");
     //   const savedUser = localStorage.getItem("user");
       
-      if (savedToken && savedUser) {
+      if (savedToken) {
         setToken(savedToken);
         // setUser(JSON.parse(savedUser));
         setIsAuthenticated(true);
