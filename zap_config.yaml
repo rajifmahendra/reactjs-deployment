@@ -35,8 +35,8 @@ env:
     users:
     - name: gabriella
       credentials:
-        password: mypassword
-        username: naomi@gmail.com
+        password: 12345
+        username: naomi@example.com
   parameters: {}
 jobs:
 - type: passiveScan-config
