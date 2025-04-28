@@ -1,0 +1,64 @@
+env:
+  contexts:
+  - name: Authentication Test
+    urls:
+    - http://13.212.48.92:4004
+    includePaths:
+    - http://13.212.48.92:4004.*
+    excludePaths:
+    - http://13.212.48.92:4004.*.css
+    - http://13.212.48.92:4004.*.mp3
+    - http://13.212.48.92:4004.*.mp4
+    - http://13.212.48.92:4004.*.jpg
+    - http://13.212.48.92:4004.*.jpeg
+    - http://13.212.48.92:4004.*.woff
+    - http://13.212.48.92:4004.*.webp
+    - http://13.212.48.92:4004.*.png
+    - http://13.212.48.92:4004.*.svg
+    authentication:
+      method: form
+      parameters:
+        loginPageUrl: http://13.212.48.92:4004/login
+        loginRequestUrl: http://13.212.48.92:4004/login
+        loginRequestBody: "email={%username%}&password={%password%}"
+      verification:
+        method: autodetect
+        loggedOutRegex: <input type="submit">
+        pollFrequency: 60
+        pollUnits: requests
+        pollUrl: ""
+        pollPostData: ""
+    sessionManagement:
+      method: cookie
+    technology: {}
+    structure: {}
+    users:
+    - name: rajif
+      credentials:
+        password: mypassword
+        username: rajif@gmail.com
+  parameters: {}
+jobs:
+- type: passiveScan-config
+  parameters: {}
+- type: spider
+  parameters:
+    context: Authentication Test
+    user: rajif
+    url: http://13.212.48.92:4004/
+    parseDsStore: null
+- type: spiderAjax
+  parameters:
+    context: Authentication Test
+    user: rajif
+    url: http://13.212.48.92:4004/
+    browserId: null
+- type: passiveScan-wait
+  parameters: {}
+- type: activeScan
+  parameters:
+    context: Authentication Test
+    user: rajif
+  policyDefinition:
+    defaultStrength: insane
+    defaultThreshold: high
