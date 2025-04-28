@@ -13,6 +13,6 @@ EXPOSE 4173
 
 # Make the docker-entrypoint.sh script executable
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-
+RUN chmod +x /tmp
 # Run the preview command
 CMD ["npm", "run", "preview"]
