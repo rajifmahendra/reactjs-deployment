@@ -2,24 +2,24 @@ env:
   contexts:
   - name: Authentication Test
     urls:
-    - http://13.212.48.92:4004
+    - http://54.179.2.8:4001
     includePaths:
-    - http://13.212.48.92:4004.*
+    - http://54.179.2.8:4001.*
     excludePaths:
-    - http://13.212.48.92:4004.*.css
-    - http://13.212.48.92:4004.*.mp3
-    - http://13.212.48.92:4004.*.mp4
-    - http://13.212.48.92:4004.*.jpg
-    - http://13.212.48.92:4004.*.jpeg
-    - http://13.212.48.92:4004.*.woff
-    - http://13.212.48.92:4004.*.webp
-    - http://13.212.48.92:4004.*.png
-    - http://13.212.48.92:4004.*.svg
+    - http://54.179.2.8:4001.*.css
+    - http://54.179.2.8:4001.*.mp3
+    - http://54.179.2.8:4001.*.mp4
+    - http://54.179.2.8:4001.*.jpg
+    - http://54.179.2.8:4001.*.jpeg
+    - http://54.179.2.8:4001.*.woff
+    - http://54.179.2.8:4001.*.webp
+    - http://54.179.2.8:4001.*.png
+    - http://54.179.2.8:4001.*.svg
     authentication:
       method: form
       parameters:
-        loginPageUrl: http://13.212.48.92:4004/login
-        loginRequestUrl: http://13.212.48.92:4004/login
+        loginPageUrl: http://54.179.2.8:4001/login
+        loginRequestUrl: http://54.179.2.8:4001/login
         loginRequestBody: "email={%username%}&password={%password%}"
       verification:
         method: autodetect
@@ -45,13 +45,13 @@ jobs:
   parameters:
     context: Authentication Test
     user: rajif
-    url: http://13.212.48.92:4004/
+    url: http://54.179.2.8:4001/
     parseDsStore: null
 - type: spiderAjax
   parameters:
     context: Authentication Test
     user: rajif
-    url: http://13.212.48.92:4004/
+    url: http://54.179.2.8:4001/
     browserId: null
 - type: passiveScan-wait
   parameters: {}
